@@ -1,0 +1,20 @@
+let nearness = 0
+while (nearness <= 10) {
+    // tutorial from makecode.mindstorms.com
+    if (40 < sensors.color1.light(LightIntensityMode.Reflected)) {
+        motors.largeBC.tank(-5, -15)
+    } else {
+        motors.largeBC.tank(-15, -5)
+    }
+}
+//move arm
+motors.stopAll()
+motors.mediumA.run(100)
+pause(1000)
+motors.stopAll()
+motors.largeBC.tank(50, 50)
+pause(500)
+motors.stopAll()
+forever(function () {
+    nearness = sensors.ultrasonic4.distance()
+})
